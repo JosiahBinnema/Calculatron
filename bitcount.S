@@ -1,7 +1,7 @@
 
 .syntax unified
 .section .text
-.global subtract
+.global bitcount
 
 bitcount:
 PUSH {r1, r2, r3, sp, lr}
