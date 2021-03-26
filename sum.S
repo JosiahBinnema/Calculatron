@@ -3,7 +3,7 @@
 .global sum
 
 sum:
-PUSH{r2, sp, lr}
+PUSH {r2, sp, lr}
 
 MOV r2, #0x0
 CMP r0, r1
@@ -20,7 +20,7 @@ BL LOOPER
 
 RETURN:
 MOV r0, r2
-POP{r2, sp, lr}
+POP {r2, sp, lr}
 BX lr
 
 

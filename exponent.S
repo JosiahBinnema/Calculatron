@@ -14,7 +14,7 @@ LOOPER:
 SUB r1, #0x01
 MUL r0, r0
 CMP r1, #0x01
-BX LOOPER:
+BL LOOPER
 
 RETURNN:
 POP {r2, sp, lr}

@@ -1,10 +1,8 @@
-
 .syntax unified
 .section .text
-.global divide:
+.global divide
 
 divide:
-
 PUSH {r2,sp, lr}
 MOV r2, #0x0
 CMP r0, r1
