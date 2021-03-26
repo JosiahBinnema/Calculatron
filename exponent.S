@@ -2,17 +2,17 @@
 .section .text
 .global exponent
 
-
 exponent:
-PUSH {r2,sp, lr}
-MOV r2, r1
+PUSH {r2, sp, lr}
+MOV r2, r0
 CMP r1, #0x01
-BLT RETURN1
-BEQ RETURNN
 
 LOOPER:
+BLT RETURN
+BEQ RETURNN
+
 SUB r1, #0x01
-MUL r0, r0
+MUL r0, r2
 CMP r1, #0x01
 BL LOOPER
 
@@ -20,10 +20,10 @@ RETURNN:
 POP {r2, sp, lr}
 BX lr
 
-
-RETURN1:
+RETURN:
 MOV r0, #0x1
 POP {r2, sp, lr}
 BX lr
+
 
 

@@ -11,18 +11,19 @@ int main(void){
 	printf("Type \"help\" for a list of commands, or type a command to get started! Type \"quit\"  to exit the program \n");
 	scanf("%s", command);
 
-	if('a' == command[0]){					//addition
+	if('a' == command[0]){								//addition
 		printf("add which two integers together?");
 		scanf("%d%d", &int1,&int2);
 		int result = (addition(int1,int2));
 		printf("%d plus %d is %d\n", int1, int2, result);
 
-	}else if ('m' == command [0]){				//multiplication
-		printf("Multiply which two integers?");
+	}else if ('m' == command [0]){							//multiplication
+		printf("Multiply which two integers?\n");
+		scanf("%d%d", &int1, &int2);
 		int result =(multiply(int1,int2));
 		printf("%d multiplied by %d is %d \n", int1,int2, result);
 
-	} else if ('e' == command [0]){				//exponent
+	} else if ('e' == command [0]){							//exponent
                 printf("What is the base?\n");
                 scanf("%d", &int1);
 		printf("What is the exponent?\n");
@@ -30,7 +31,7 @@ int main(void){
                 int result =(exponent(int1,int2));
                 printf("%d raised to the power of  %d is %d \n", int1,int2, result);
 
-        } else if ('d' == command [0]){				// divide
+        } else if ('d' == command [0]){							// divide
                 printf("Divide which two integers?\n");
                 scanf("%d%d", &int1,&int2);
                 int result =(divide(int1,int2));
@@ -38,17 +39,18 @@ int main(void){
 
         } else if ('s' == command [0]){
 
-		if('m' == command [2]){			//Sum (sigma)
+		if('m' == command [2]){							//Sum (sigma)
         	        printf("Sum together all of the integers between which two integers?\n");
                		scanf("%d%d", &int1,&int2);
-			if(int1 > int2){
+	                printf("The numbers between %d and %d inclusive add to equal", int1, int2);
+			if (int1 > int2){
 	                	int result =(sum(int1,int2));
-			}else{
+				printf(" %d\n", result);
+			} else{
 				int result = (sum(int2,int1));
+				printf(" %d\n", result);
 			}
-                	printf("The numbers between %d and %d inclusive add to equal %d\n", int1,int2, result);
-
-		} else if('b' == command [2]){		//subtract
+		} else if('b' == command [2]){						//subtract
 			printf("Enter the larger integer to subtract from, then the amount to subtract\n");
 			scanf("%d%d", &int1, &int2);
 			if (int1 > int2){
@@ -60,24 +62,27 @@ int main(void){
 			}
 		}
 
-	}else if('f' == command[0]){			//factorial
+	}else if('f' == command[0]){							//factorial
 		printf("Compute which factorial?\n");
                 scanf("%d", &int1);
                 int result =(factorial(int1));
-                printf("%d factorial is\n", int1, result);
+                printf("%d factorial is %d \n", int1, result);
 
-	}else if ('b' == command[0]){			// bitcount
+	}else if ('b' == command[0]){							// bitcount
 		printf("How many set bits in which integer?\n");
 		scanf("%d", &int1);
 		int result = (bitcount(int1));
-		printf("There are %d set bits in %d\n", result, int1);
+		if (result == 1){
+	                printf("There is only one set bit in %d\n", int1);
+		}else{
+			printf("There are %d set bits in %d\n", result, int1);
+		}
 
 
-
-	} else if ('i' == command [0]){				//info
+	} else if ('i' == command [0]){							//info
 		printf("prompt user for another command, then output answer");
 
-	}else if ('h' == command[0]){					//help
+	}else if ('h' == command[0]){							//help
 		printf("\n List of commands with basic description.  \n\n");
 		printf("help 		- this is what you typed to get this list\n");
 		printf("info		- If you want more information about a command use command info, then enter the command\n");
@@ -91,7 +96,7 @@ int main(void){
 		printf("sum 		- sums all numbers between the two integer entered (inclusive)\n");
 		printf("factorial	- computes the factorial of the integer\n\n");
 	}else{
-		printf("I tried my best, but I don't know what you meant. Please try again! (or type quit to quit)");
+		printf("I tried my best, but I don't know what you meant by %s. Please try again! (or type quit to quit)", command);
 	}
 
 
