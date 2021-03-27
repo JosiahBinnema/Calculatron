@@ -5,8 +5,9 @@ Readme
 fancy GUI?
 test battery
 
+Welcome to the JCC.
 
-
+The JCC is a integer calculator capable of many operations:
 
 subtract – subtracts value in r1 from r0. Takes 2 integer operands
 addition – adds values in r1 and r0. Takes 2 integer operands
