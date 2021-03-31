@@ -148,6 +148,21 @@ do{
 	} else if ('q' == command[0]){
                 printf("Bye Bye now! Hope you have a wonderful day :)\n");
 		return 0;
+	} else if ('t' == command[0]){
+		result = addition(100,199);
+		printf("Test cases: \nAddition: %d\n", result);
+		result = subtract(211999,9876);
+		printf("Subtraction: %d\n", result);
+		result =exponent(5,5);
+                printf("Exponent: %d\n", result);
+		result = divide(2004,5);
+                printf("Divide: %d\n", result);
+		result = bitcount(1221363);
+                printf("bitcount: %d\n", result);
+		result = sum(100,10);
+		printf("Sigma: %d\n", result);
+		result = factorial(6);
+                printf("Factorial: %d\n\n\n\n", result);
 	} else {
 		 printf("I tried my best, but I don't know what you meant by \"%s\". Please try again! (or type quit to quit)\n", command);
 	}
