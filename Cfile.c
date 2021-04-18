@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "header.h"
 int main(void){
-
+	int i;
 	char command[3];
 	int int1;
 	int int2;
@@ -10,27 +10,41 @@ int main(void){
 	printf("Hello! I am Josiah's Computational Calcutron. \nI am capable of a few strange mathematical operations involving integers. \n");
 	printf("Type \"help\" for a list of commands, or type a command to get started! Type \"quit\"  to exit the program \n");
 do{
-        scanf("%s", command);
-	if('a' == command[0]){								//addition
-		printf("add which two integers together?\n");
-		scanf("%d%d", &int1,&int2);
-	                int result = (addition(int1,int2));
+
+        scanf("%s", command);								// user input
+	for(i = 0; command[i] != '\0'; i++)						//tolowercase
+  		command[i] = tolower(command[i]);
+
+	if('a' == command[0] && 'd' == command [2]){
+		printf("add which two integers together?\n");								//addition
+			scanf("%d%d", &int1,&int2);
+			int result = (addition(int1,int2));
 			if (result == -1){
 				printf("sorry, the result needs to be less than 2,147,483,648\n");
 			}else {
 				printf("%d plus %d is %d\n", int1, int2, result);
 			}
-	} else if ('m' == command [0]){							//multiplication
+	} else if ('m' == command [0] && 'l' == command [2]){							//multiplication
 		printf("Multiply which two integers?\n");
 		scanf("%d%d", &int1, &int2);
-		int result =(multiply(int1,int2));
-                if (result == -1){
-       	                printf("sorry, the result needs to be less than 2,147,483,648\n");
-               	}else {
-			printf("%d multiplied by %d is %d \n", int1,int2, result);
+
+                if (int1 > int2){						// it only works if the numbers are arranged with the first operand as highest. 
+                       int result = (multiply(int1, int2));
+                       if (result == -1){
+                 	      printf("sorry, the result %d times %d isn't less than 2,147,483,648\n", int1, int2);
+	               }else {
+        	                printf("%d multiplied by %d is %d \n", int1,int2, result);
+                	}
+                } else {
+                        int result = (multiply(int2, int1));
+                        if (result == -1){
+       	        	        printf("sorry, the result %d times %d isn't less than 2,147,483,648\n", int1, int2);
+               		}else {
+				printf("%d multiplied by %d is %d \n", int1,int2, result);
+			}
 		}
 
-	} else if ('e' == command [0]){							//exponent
+	} else if ('e' == command [0] && 'p' == command [2]){							//exponent
                 printf("What is the base?\n");
                 scanf("%d", &int1);
 		printf("What is the exponent?\n");
@@ -42,13 +56,13 @@ do{
 		                printf("%d raised to the power of  %d is %d \n", int1,int2, result);
 		}
 
-        } else if ('d' == command [0]){							// divide
+        } else if ('d' == command [0] && 'v' == command [2]){							// divide
                 printf("Divide which two integers?\n");
                 scanf("%d%d", &int1,&int2);
                 int result =(divide(int1,int2));
                 printf("%d divided by %d is %d (after truncation)\n", int1,int2, result);
         } else if ('s' == command [0]){
-		if('g' == command [2]){							//Sum (sigma)
+		if('g' == command [2]){										//Sum (sigma)
         	        printf("Sum together all of the integers between which two integers?\n");
                		scanf("%d%d", &int1,&int2);
 			if (int1 > int2){
@@ -66,7 +80,7 @@ do{
 	                                printf("The numbers between %d and %d inclusive add to equal %d",int2, int1, result);
         	                }
 			}
-		} else if('b' == command [2]){						//subtract
+		} else if('b' == command [2]){									//subtract
 			printf("Enter the larger integer to subtract from, then the amount to subtract\n");
 			scanf("%d%d", &int1, &int2);
 			if (int1 > int2){
@@ -77,7 +91,7 @@ do{
 				printf("%d minus %d is negative. We don't do those here, but %d minus %d is %d\n",int1,int2, int2, int1,result);
 			}
 		}
-	} else if('f' == command[0]){							//factorial
+	} else if('f' == command[0]&&'c' == command [2]){										//factorial
 		printf("Compute which factorial?\n");
                 scanf("%d", &int1);
 		if (int1 > 12){
@@ -87,7 +101,7 @@ do{
                		printf("%d factorial is %d \n", int1, result);
 		}
 
-	} else if ('b' == command[0]){							// bitcount
+	} else if ('b' == command[0] && 't' == command [2]){							// bitcount
 		printf("How many set bits in which integer?\n");
 		scanf("%d", &int1);
 		int result = (bitcount(int1));
@@ -96,7 +110,7 @@ do{
 		}else{
 			printf("There are %d set bits in %d\n", result, int1);
 		}
-        } else if ('h' == command[0]){                                                  //help
+        } else if ('h' == command[0] && 'l' == command[2]){                                                  //help
                 printf("\n Here is a list of commands, each with a basic description.\n For a detailed description of a command, enter \"info\" then the command.\n\n");
                 printf("help            - this is what you typed to get this list\n");
                 printf("info            - If you want more information about a command use command info, then enter the command\n");
@@ -110,45 +124,50 @@ do{
                 printf("sigma           - sums all numbers between the two integer entered (inclusive)\n");
                 printf("factorial       - computes the factorial of the integer\n\n");
 
-	} else if ('i' == command [0]){
+	} else if ('i' == command [0] && 'f' == command [2]){										// info command
+
 		printf("Which command do you want more information about?\n");
 		scanf("%s", command);
-		printf("\n\n\nThe inputs and the result of any calculation must be a positive integer less than 2,147,483,648\n");
-		printf("Input can be done on one line \" subtract 10 4\" or can be spit onto multiple lines. Values entered must be integers. Floating points are not supported.\n");
+		if ('h' == command[0] && 'l' == command [2]){
+			printf("The help command lists all available commands accompanied by a brief description."); 			//help info
+		}
+		printf("                           GENERAL OPERATING RULES:");
+		printf("\n\nThe inputs and the result of any calculation must be a positive integer less than 2,147,483,648\n");
+		printf("Input can be done on one line \" subtract 10 4\" or can be spit onto multiple lines. Values entered must be integers. Floating points are not supported.\n \n");
 
-		if ('a' == command[0]){
-			printf("Addition. Takes two values and adds them together. \n Input:\n Two integers, any order\n");
+		if ('a' == command[0]&& 'd' == command [2]){
+			printf("Addition. Takes two values and adds them together. \n   Input:\n   Two integers, any order\n");
 
-		}else if ('m' == command[0]){
-                        printf("Multiplication. Takes two values and multiplies them. \n Input:\n Two integers, any order\n");
+		}else if ('m' == command[0]&& 'l' == command [2]){
+                        printf("Multiplication. Takes two values and multiplies them. \n   Input:\n   Two integers, any order\n");
 
-                }else if ('e' == command[0]){
-                        printf("Exponent. The first value entered is the base. The second value entered is the exponent that that base is raised to.  \n Input:\n Two integers. Base then exponent.\n");
+                }else if ('e' == command[0] && 'p' == command [2]){
+                        printf("Exponent. The first value entered is the base. The second value entered is the exponent that that base is raised to.  \n   Input:\n   Two integers. Base then exponent.\n");
 
-                }else if ('d' == command[0]){
-                        printf("Performs integer division. No floating point values. The operation is floored, meaning the result is always rounded down. \n Input:\n Two integers. Dividend then divisor.\n");
+                }else if ('d' == command[0] && 'v' == command [2]){
+                        printf("Performs integer division. No floating point values. The operation is floored, meaning the result is always rounded down. \n   Input:\n   Two integers. Dividend then divisor.\n");
 
-                }else if ('b' == command[0]){
-                        printf("Bitcounting. This counts the number of 1's or \"set\" bits in the binary representation of the input \n Input:\n One integer\n");
+                }else if ('b' == command[0] && 't' == command [2]){
+                        printf("Bitcounting. This counts the number of 1's or \"set\" bits in the binary representation of the input \n   Input:\n   One integer\n");
 
-                }else if ('f' == command[0]){
-                        printf("Factorial. Calculates the factorial of the input. \n Input:\n One integer\n");
+                }else if ('f' == command[0] && 'c' == command [2]){
+                        printf("Factorial. Calculates the factorial of the input. \n   Input:\n   One integer\n");
 
                 }else if ('s' == command[0]){
-			if('m' == command[2]){
-                        	printf("Sigma. Totals the sum of each two integers and the values between the two given.  \n Input:\n Two integers. No order required\n");
+			if('g' == command[2]){
+                        	printf("Sigma. Totals the sum of each two integers and the values between the two given.  \n   Input:\n   Two integers. No order required\n");
 
 			}else if ('b' == command[2]){
 				printf("Subtract. Subtracts one integer from the other. The first number given should be the largest, but it will rearrange them for you if you forgot. It will also notify you.");
-				printf("\n Input: \n Two integers. Preferably minuend then subtrahend. \nRemember: No negatives are allowed\n");
+				printf("\n   Input: \n   Two integers. Preferably minuend then subtrahend. \nRemember: No negatives are allowed\n");
 			}
 		}
 
 
-	} else if ('q' == command[0]){
+	} else if ('q' == command[0] && 'i' == command [2]){
                 printf("Bye Bye now! Hope you have a wonderful day :)\n");
 		return 0;
-	} else if ('t' == command[0]){
+	} else if ('t' == command[0]&& 's' == command [2]){
 		result = addition(100,199);
 		printf("Test cases: \nAddition: %d\n", result);
 		result = subtract(211999,9876);
@@ -167,9 +186,9 @@ do{
 		 printf("I tried my best, but I don't know what you meant by \"%s\". Please try again! (or type quit to quit)\n", command);
 	}
 
-	printf("\n\nAre there any other commands you would like to run? Type help for a list of commands or quit to quit\n");
+	printf("\n\nAre there any other commands you would like to run? Type \"help\" for a list of commands or \"quit\" to quit\n");
 
-} while ('q' != command[0]);
+} while ('q' != command[0] && 'i' != command[2]);
 
 return 0;
 }
