@@ -5,18 +5,17 @@ This is a calculator intended to be run on the Raspberry Pi. The mathematical ca
 ## User commands
 Upon program start, you may enter a command from the list below. 
 
-* help &nbsp &nbsp &nbsp &nbsp &nbsp		- gives a list of commands and brief description. 
-* info	 	-gives information about a command. Takes 1 string operand.
-
-
-* subtract	– finds the difference between two integers (It will arrange them to ensure a positive result). 
-* add 		– adds two integers.
-* multiply	– multiplies two integer operands. 
-* exponent	– raises your first entry to the power of the second entry.
-* divide 	– Divides your first entry by your second entry. The result is rounded down to the nearest integer. 
-* bitcount	– counts the number of “set” bits in the binary representation of your entry.
-* sigma 	– Sums all the numbers between the two numbers entered. (including the numbers)
-* factorial 	– computes the factorial of your entry
+| help		|gives a list of commands and brief description.| 
+| info	 	|gives information about a command. Takes 1 string operand.|
+|
+| subtract	| finds the difference between two integers (It will arrange them to ensure a positive result).| 
+| add 		| adds two integers.|
+| multiply	| multiplies two integer operands.| 
+| exponent	| raises your first entry to the power of the second entry.|
+| divide 	| Divides your first entry by your second entry. The result is rounded down to the nearest integer.| 
+| bitcount	| counts the number of “set” bits in the binary representation of your entry.|
+| sigma 	| Sums all the numbers between the two numbers entered. (including the numbers)|
+| factorial 	| computes the factorial of your entry|
 
 
 To ensure smooth operation, Enter the required number of integers for the operation selected. Do not exceed this number.  
