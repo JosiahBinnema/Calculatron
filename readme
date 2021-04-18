@@ -1,4 +1,4 @@
-Hello and welcome to the JCC
+**Hello and welcome to the JCC**
 This is a calculator intended to be run on the Raspberry Pi. The mathematical calculations are done in ARM, and the user GUI is a simple text-based GUI written in C. It is capable of several mathematical operations.
 Upon program start, you may enter a command from the list below. 
 help 		- gives a list of commands and brief description. 
