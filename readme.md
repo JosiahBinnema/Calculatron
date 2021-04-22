@@ -33,6 +33,7 @@ The Raspberry Pi’s inputs and results must be contained in a 32-bit integer; t
 
 ### Notes for Nerds 
 The program checks for 32-bit overflow from within the ARM code to reduce redundant computation.   
+The assembly code getints.S correctly returns all of the integers from a string as one large integer. I havn't yet gotten it to play nicely with C, so I will have to use scanf for now 
 Because typos in user entries may be common, the program only compares the first and third character entered for matching a command. This gives a decent chance at interpreting a word that the user might have typed incorrectly.  
 If you do not enter a command when inside of INFO, you will have to re-enter info command.  
 The test command is a hidden command. Enter “test” to run the batter of tests suggested by Conan Veitch.  
@@ -42,7 +43,7 @@ The test command is a hidden command. Enter “test” to run the batter of test
 **Known issues**:  
 Please do not enter characters in place of your integers it confuses the program.   
 Entering 3 integers on one line will require you to re-enter them without a prompt.  
-Overall user entry need to be rehauled. Using scanf was a horrible mistake, and it needs to be replaced with getline() then intelligently reading user input from that.
+Overall user entry need to be rehauled. Using scanf was a horrible mistake, and it needs to be replaced with getline() then intelligently reading user input from that. I wrote an assembly file for this named getints.S
 
 ---
 
