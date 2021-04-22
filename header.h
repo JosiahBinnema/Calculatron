@@ -9,6 +9,6 @@ int divide    (int a, int b);
 int bitcount  (int a);
 int sum       (int a, int b);
 int factorial (int a);
-
+int getints   (char *s, int b);
 #endif //Cfile_H_
 
